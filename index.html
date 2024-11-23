@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" data-contexto="presentacion">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusTimer</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="background">
+        <div class="background_estrellas"></div>
+        <div class="background_nube_izquierda"></div>
+        <div class="background_nube_derecha"></div>
+        <div class="background_ballena"></div>
+    </div>
+    <header class="header">
+        <img class="header_logo" src="imagenes/icono-pomodoro-96.png" alt="logo Focus Timer">
+        <p class="header_titulo">Focus Timer</p>
+    </header>
+    <main class="app">
+        <section class="app_contenido">
+             <h1 class="app_contenido_titulo">Potencia tu enfoque</h1>
+             <p class="app_contenido_texto">Trabaja - Descansa - Repite</p>
+        </section>
+        <div id="timer" class="app_timer"></div>
+        <section class="app_botones">
+            <button data-contexto="comenzar" class="app_botones_comenzar" id="comenzar-pausar">
+                <img src="imagenes/icono-play.png" class="app_botones_comenzar_icono" alt="icono play">
+            </button>
+            <ul class="app_botones_lista">
+                <li>
+                    <button data-contexto="enfoque" class="app_botones_enfoque">Enfoque</button>
+                </li>
+                <li>
+                    <button data-contexto="descansar" class="app_botones_descansar">Descanso</button>
+                </li>
+            </ul>
+            <button data-contexto="descansoLargo" class="app_botones_descanso_largo">Descanso largo</button>
+        </section>
+        <section class="app_musica">
+            <ul class="app__card-list">
+                <li class="app__card-list-item">
+                    <label class="toggle">
+                        <input class="toggle-checkbox" type="checkbox" id="alternar-musica">
+                        <div class="toggle-switch"></div>
+                        <img src="imagenes/icono-musica.png" alt="icono musica" class="toggle_icono">
+                    </label>
+                </li>
+            </ul>  
+        </section>      
+    </main>
+    <footer class="footer">
+        <img src="imagenes/icono-derechos-autor.png" alt="Copyright" class="footer__img">
+        <p class="footer__texto"> 
+            Desarrollado por Florencia Vergara
+        </p>
+    </footer>
+    <div id="modal-overlay">
+        <div id="modal" class="modal">
+            <p class="modal-texto">¡Tiempo finalizado!</p>
+            <button id="cerrar-modal" class="modal-boton">Aceptar</button>
+        </div>
+    </div>
+</body>
+</html>
