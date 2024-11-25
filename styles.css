@@ -495,18 +495,31 @@ body{
     }
 
     .app_botones{
+        width: 100%;
         gap: 10px;
     }
 
     .app_botones_lista{
+        width: 100%;
+        justify-content: center;
         gap: 80px;
     }
 
+    .app_botones_comenzar img{
+        height: 36px;
+    }
+
     .app_botones_enfoque{
-        padding: 10px 60px;
+        padding: 10px 75px;
     }
 
     .app_botones_descansar{
-        padding: 10px 60px;
+        padding: 10px 75px;
+    }
+
+    .app_botones_descanso_largo{
+        width: fit-content;
+        padding: 10px 200px;
+        font-size: 1.25rem;
     }
 }
