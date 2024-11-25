@@ -25,7 +25,7 @@ botonComenzar.addEventListener('click', () => {
 });
 
 botonDescansar.addEventListener('click', () => {
-    tiempoTranscurridoEnSeg = 5;
+    tiempoTranscurridoEnSeg = 300;
     cambiarContexto('descansar');
 });
 
