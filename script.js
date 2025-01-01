@@ -17,6 +17,8 @@ const botonCerrarModal = document.getElementById('cerrar-modal');
 
 let tiempoTranscurridoEnSeg = 1500;
 let idIntervalo = null;
+let tiempoInicio = null;
+let tiempoFin = null;
 
 // Listeners
 botonComenzar.addEventListener('click', () => {
@@ -98,8 +100,24 @@ function iniciarPausar() {
         reiniciar();
         return;
     }
-    idIntervalo = setInterval(cuentaRegresiva, 1000);
+    tiempoInicio = Date.now(); // Marca de tiempo al iniciar
+    tiempoFin = tiempoInicio + tiempoTranscurridoEnSeg * 1000; // Tiempo de fin exacto
+
+    idIntervalo = setInterval(actualizarTiempo, 100); // Intervalos más cortos para mayor precisión
     iconoIniciarPausar.setAttribute('src', './imagenes/icono-pausa.png');
+}
+
+function actualizarTiempo() {
+    const tiempoRestante = Math.max(Math.floor((tiempoFin - Date.now()) / 1000), 0);
+    tiempoTranscurridoEnSeg = tiempoRestante; // Actualiza el tiempo restante
+
+    mostrarTiempo();
+
+    if (tiempoRestante <= 0) {
+        reiniciar();
+        musicaFin.play();
+        mostrarModalFinTiempo();
+    }
 }
 
 function reiniciar() {
@@ -109,9 +127,9 @@ function reiniciar() {
 }
 
 function mostrarTiempo() {
-    const tiempo = new Date(tiempoTranscurridoEnSeg * 1000);
-    const tiempoFormateado = tiempo.toLocaleTimeString('es-AR', { minute: '2-digit', second: '2-digit' });
-    tiempoEnPantalla.innerHTML = `${tiempoFormateado}`;
+    const minutos = Math.floor(tiempoTranscurridoEnSeg / 60);
+    const segundos = tiempoTranscurridoEnSeg % 60;
+    tiempoEnPantalla.innerHTML = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
 }
 
 function mostrarModalFinTiempo() {
